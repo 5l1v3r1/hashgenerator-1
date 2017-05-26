@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HASH GEN</title>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script type="text/javascript">
+		
+$(document).ready(function(){
+	
+
+	var val=null;
+$("#btn").click(function(){
+val=document.getElementById("str").value;
+$.ajax({
+	url:"enc.php?str="+val,
+	method: "GET",
+	success: function(data){
+		console.log(data);
+		var obj = JSON.parse(data);
+$("#md5").text("Your MD5 hash: "+obj.md5);
+$("#sha1").text("Your SHA1 hash :"+obj.sha1);
+	}
+
+});
+});
+});
+	</script>
+</head>
+<body style="background-color: sky-blue">
+<center>
+<h1 class="text-danger">MD5,SHA1 HASH GENERATOR </h1>
+<h2 class="text-danger">made by abutech</h2>
+<input type="text" name="str" id="str" placeholder="your string"><br>
+<input id="btn" type="button" value="calculate" class="btn btn-primary">
+<h1 id="md5" class="text-success">Your MD5 hash</h1><br>
+<h1 id="sha1" class="text-success">Your SHA1 hash</h1>
+</center>
+</body>
+</html>
